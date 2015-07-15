@@ -6,9 +6,7 @@
 Δημιουργία συστήματος εξαγωγής της άποψης (από τα σχόλια στην Αγγλική γλώσσα)
 των χρηστών με τη χρήση του **Rapidminer** v5.3.
 
- 
-
- 
+![](<https://github.com/ioa-maellak/UsersOpinion/blob/master/images/rapidminer-logo.jpg>)
 
 Το συστημα μας μπορει αν συνδιαστεί με οποιοδήποτε πληροφοριακό σύστημα που
 μπορούν να εξαχθούν τα σχόλια των χρηστών π.χ φορουμ, blog ή διάφορα API
@@ -25,7 +23,7 @@
 
  
 
- 
+![](<https://github.com/ioa-maellak/UsersOpinion/blob/master/images/method.jpg>)
 
 Εικόνα 1. Μεθοδολογία
 
@@ -37,7 +35,7 @@ Text Filtering
 
  
 
- 
+![](<https://github.com/ioa-maellak/UsersOpinion/blob/master/images/keep-nouns.jpg>)
 
 Εικόνα 2. Text Filtering
 
@@ -51,12 +49,12 @@ Rapidminer.
 
  
 
- 
+![](<https://github.com/ioa-maellak/UsersOpinion/blob/master/images/training_model.jpg>)
 
 Εικόνα 3. Training Model (βασισμένο στο SVM Linear)
 
  
 
- 
+![](<https://github.com/ioa-maellak/UsersOpinion/blob/master/images/word-vector.jpg>)
 
 Εικόνα 4. Word Vector List
