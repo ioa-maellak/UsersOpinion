@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<process version="5.3.015">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="5.3.015" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="text:read_document" compatibility="5.3.002" expanded="true" height="60" name="Read Document" width="90" x="45" y="30">
+        <parameter key="file" value="C:\Users\jim\Dropbox\Public\Ionio\RCIS15\COLING2014-off\save_cc\-1Y9OqSJKCc.txt"/>
+        <parameter key="extract_text_only" value="true"/>
+        <parameter key="use_file_extension_as_type" value="true"/>
+        <parameter key="content_type" value="txt"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <operator activated="true" class="web:unescape_html" compatibility="5.3.001" expanded="true" height="60" name="Unescape HTML Document" width="90" x="246" y="30"/>
+      <operator activated="true" class="text:tokenize" compatibility="5.3.002" expanded="true" height="60" name="Tokenize" width="90" x="447" y="30">
+        <parameter key="mode" value="non letters"/>
+        <parameter key="characters" value=".:"/>
+        <parameter key="language" value="English"/>
+        <parameter key="max_token_length" value="3"/>
+      </operator>
+      <operator activated="true" class="text:filter_stopwords_english" compatibility="5.3.002" expanded="true" height="60" name="Filter Stopwords (English)" width="90" x="45" y="165"/>
+      <operator activated="true" class="text:filter_by_length" compatibility="5.3.002" expanded="true" height="60" name="Filter Tokens (by Length)" width="90" x="313" y="165">
+        <parameter key="min_chars" value="2"/>
+        <parameter key="max_chars" value="25"/>
+      </operator>
+      <operator activated="true" class="text:filter_tokens_by_pos" compatibility="5.3.002" expanded="true" height="60" name="Filter Tokens (by POS Tags)" width="90" x="514" y="165">
+        <parameter key="language" value="English"/>
+        <parameter key="expression" value="N.*"/>
+        <parameter key="invert_filter" value="false"/>
+      </operator>
+      <connect from_op="Read Document" from_port="output" to_op="Unescape HTML Document" to_port="document"/>
+      <connect from_op="Unescape HTML Document" from_port="document" to_op="Tokenize" to_port="document"/>
+      <connect from_op="Tokenize" from_port="document" to_op="Filter Stopwords (English)" to_port="document"/>
+      <connect from_op="Filter Stopwords (English)" from_port="document" to_op="Filter Tokens (by Length)" to_port="document"/>
+      <connect from_op="Filter Tokens (by Length)" from_port="document" to_op="Filter Tokens (by POS Tags)" to_port="document"/>
+      <connect from_op="Filter Tokens (by POS Tags)" from_port="document" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+    </process>
+  </operator>
+</process>
